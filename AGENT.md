@@ -142,7 +142,8 @@ test -f .env.example && echo "Environment template found" || echo "Create .env.e
 ### AI Package Detection
 ```bash
 # Check for common AI packages
-grep -E "(openai|langchain|tensorflow|pytorch|huggingface)" package.json 2>/dev/null || echo "No AI packages found"
+# Check for common AI packages (precise detection in dependencies)
+jq '.dependencies, .devDependencies | keys[]' package.json 2>/dev/null | grep -E "(openai|langchain|tensorflow|pytorch|huggingface)" || echo "No AI packages found"
 ```
 
 ### Development Commands (when package.json exists)
