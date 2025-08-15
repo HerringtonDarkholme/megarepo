@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "steering": {
+    "model": {
+      "type": "llm",
+      "provider": "openai",
+      "model_name": "gpt-4",
+      "temperature": 0.7,
+      "max_tokens": 2048
+    },
+    "behavior": {
+      "safety_level": "strict",
+      "response_style": "helpful",
+      "context_window": 4096
+    },
+    "prompts": {
+      "system_prompt_file": "./steering/system.md",
+      "user_prompt_template": "./steering/user_template.md"
+    },
+    "tools": {
+      "enabled": true,
+      "whitelist": ["search", "code_analysis", "file_operations"]
+    }
+  }
+}

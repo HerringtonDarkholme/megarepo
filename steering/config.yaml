@@ -1,0 +1,45 @@
+name: kiro-steering
+version: 1.0.0
+
+steering:
+  model_config:
+    provider: openai
+    model: gpt-4
+    temperature: 0.7
+    max_tokens: 2048
+    top_p: 0.9
+    frequency_penalty: 0.0
+    presence_penalty: 0.0
+
+  safety_config:
+    content_filter: true
+    harmful_content_detection: true
+    pii_detection: true
+    bias_detection: true
+
+  behavior_config:
+    response_style: "professional"
+    verbosity: "balanced"
+    code_quality_focus: true
+    security_awareness: true
+
+  context_config:
+    max_context_length: 4096
+    context_retention: "session"
+    memory_optimization: true
+
+  tool_config:
+    enabled_tools:
+      - file_operations
+      - code_analysis
+      - search
+      - documentation
+    restricted_tools:
+      - system_commands
+      - network_access
+
+  output_config:
+    format: "markdown"
+    include_explanations: true
+    code_highlighting: true
+    step_by_step: true
