@@ -4,24 +4,77 @@ This directory contains documentation and configuration files for Google's Gemin
 
 ## Files
 
-- **[configuration.md](./configuration.md)** - Comprehensive guide to Gemini CLI configuration
-- **[settings.json](./settings.json)** - Example settings.json file with common configuration options
+- **[configuration.md](./configuration.md)** - Comprehensive guide to Gemini CLI configuration based on official documentation
+- **[settings.json](./settings.json)** - Example settings.json file with valid configuration options
 
-## Quick Reference
+## Quick Setup
 
-### Essential Configuration
-- API Key: Set `GEMINI_API_KEY` environment variable
-- Model: Choose between `gemini-pro`, `gemini-pro-vision`
-- Temperature: Control creativity (0.0-1.0)
-- Safety Settings: Configure content filtering
+1. **Install Gemini CLI**:
+   ```bash
+   npm install -g @google/gemini-cli
+   ```
 
-### Usage
+2. **Set up API key**:
+   ```bash
+   cp .env.example .env
+   # Edit .env and add your GEMINI_API_KEY
+   ```
+
+3. **Start using**:
+   ```bash
+   # Interactive mode
+   gemini
+   
+   # One-time prompt
+   gemini --prompt "Your question here"
+   ```
+
+## Essential Configuration
+
+### Environment Variables
+- **API Key**: Set `GEMINI_API_KEY` environment variable (required)
+- **Model**: Set `GEMINI_MODEL` (optional, defaults to latest)
+- **Sandbox**: Set `GEMINI_SANDBOX=true` for safer execution
+
+### Settings File
+Copy the example `settings.json` to `.gemini/settings.json` in your project and customize:
+
+```json
+{
+  "theme": "GitHub",
+  "autoAccept": false,
+  "sandbox": false,
+  "showLineNumbers": true
+}
+```
+
+### Context Files
+Create a `GEMINI.md` file in your project root with instructions for the AI:
+
+```markdown
+# Project Context
+- Use TypeScript for all code
+- Follow ESLint configuration
+- Include error handling
+```
+
+## Common Commands
+
 ```bash
-# Basic usage with default settings
-gemini generate "Your prompt here"
+# Start interactive session
+gemini
 
-# Custom configuration
-gemini generate "Your prompt" --config ./settings.json
+# Use specific model
+gemini --model gemini-1.5-pro
+
+# Enable sandbox for safety
+gemini --sandbox
+
+# Auto-approve safe operations
+gemini --approval-mode auto_edit
+
+# Include all files as context
+gemini --all-files
 ```
 
 For detailed information, see [configuration.md](./configuration.md).

@@ -1,209 +1,366 @@
 # Gemini CLI Configuration
 
-This document describes how to configure the Google Gemini CLI for optimal AI development workflows.
+This document provides a comprehensive guide to configuring Google's Gemini CLI for AI development workflows. This information is based on the official [Gemini CLI documentation](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/configuration.md).
 
 ## Overview
 
-The Gemini CLI is Google's command-line interface for interacting with Gemini AI models. It provides a powerful way to integrate AI capabilities into your development workflow.
+Gemini CLI is Google's command-line interface for interacting with Gemini AI models. It provides powerful AI capabilities through an interactive chat interface with built-in tools for file operations, shell commands, and more.
 
 ## Installation
 
 ```bash
-# Install Gemini CLI via npm
+# Install via npm
 npm install -g @google/gemini-cli
 
-# Or install locally in your project
-npm install @google/gemini-cli
+# Or using npx (no installation required)
+npx @google/gemini-cli
+
+# Or download from GitHub releases
+# Visit: https://github.com/google-gemini/gemini-cli/releases
 ```
 
-## Configuration Files
+## Configuration Layers
 
-### settings.json
+Configuration is applied in the following order of precedence (higher numbers override lower):
 
-The primary configuration file for Gemini CLI is `settings.json`. This file should be placed in your project root or in a `.gemini` directory.
+1. **Default values** - Hardcoded defaults within the application
+2. **User settings file** - Global settings for the current user (`~/.gemini/settings.json`)
+3. **Project settings file** - Project-specific settings (`.gemini/settings.json`)
+4. **System settings file** - System-wide settings (OS-dependent)
+5. **Environment variables** - System or session-specific variables
+6. **Command-line arguments** - Values passed when launching the CLI
 
-**Location Options:**
-- `./settings.json` (project root)
-- `./.gemini/settings.json` (project-specific)
-- `~/.gemini/settings.json` (global user settings)
+## Settings Files
+
+### File Locations
+
+- **User settings**: `~/.gemini/settings.json`
+- **Project settings**: `.gemini/settings.json` (in project root)
+- **System settings**: OS-dependent location (see official docs)
 
 ### Available Settings in settings.json
 
+The following settings are available in `settings.json`:
+
+#### Core Settings
+
+- **`theme`** (string): Visual theme for Gemini CLI
+  - Default: `"Default"`
+  - Example: `"GitHub"`, `"Dracula"`
+
+- **`autoAccept`** (boolean): Auto-accept safe tool calls without confirmation
+  - Default: `false`
+
+- **`vimMode`** (boolean): Enable vim-style input editing
+  - Default: `false`
+
+- **`sandbox`** (boolean or string): Enable sandboxing for tool execution
+  - Default: `false`
+  - Values: `true`, `false`, `"docker"`, `"podman"`
+
+#### Display Settings
+
+- **`hideTips`** (boolean): Hide helpful tips in the CLI
+  - Default: `false`
+
+- **`hideBanner`** (boolean): Hide startup banner (ASCII art logo)
+  - Default: `false`
+
+- **`showLineNumbers`** (boolean): Show line numbers in code blocks
+  - Default: `true`
+
+#### Session Settings
+
+- **`maxSessionTurns`** (number): Maximum turns per session
+  - Default: `-1` (unlimited)
+
+- **`usageStatisticsEnabled`** (boolean): Enable usage statistics collection
+  - Default: `true`
+
+#### File and Tool Settings
+
+- **`fileFiltering`** (object): Control git-aware file filtering
+  ```json
+  {
+    "respectGitIgnore": true,
+    "enableRecursiveFileSearch": true
+  }
+  ```
+
+- **`coreTools`** (array): Specify allowed core tools
+  - Example: `["ReadFileTool", "GlobTool", "ShellTool(ls)"]`
+
+- **`excludeTools`** (array): Specify tools to exclude
+  - Example: `["run_shell_command", "findFiles"]`
+
+#### Context Files
+
+- **`contextFileName`** (string or array): Filename for context files
+  - Default: `"GEMINI.md"`
+  - Example: `"AGENTS.md"` or `["GEMINI.md", "CONTEXT.md"]`
+
+#### Advanced Settings
+
+- **`telemetry`** (object): Configure telemetry collection
+  ```json
+  {
+    "enabled": false,
+    "target": "local",
+    "otlpEndpoint": "http://localhost:4317",
+    "logPrompts": true
+  }
+  ```
+
+- **`checkpointing`** (object): Configure conversation checkpointing
+  ```json
+  {
+    "enabled": false
+  }
+  ```
+
+- **`preferredEditor`** (string): Editor for viewing diffs
+  - Default: `"vscode"`
+
+### Example settings.json
+
 ```json
 {
-  "apiKey": "${GEMINI_API_KEY}",
-  "model": "gemini-pro",
-  "temperature": 0.7,
-  "maxTokens": 1024,
-  "topP": 0.9,
-  "topK": 40,
-  "safetySettings": {
-    "harassment": "BLOCK_MEDIUM_AND_ABOVE",
-    "hateSpeech": "BLOCK_MEDIUM_AND_ABOVE", 
-    "sexuallyExplicit": "BLOCK_MEDIUM_AND_ABOVE",
-    "dangerousContent": "BLOCK_MEDIUM_AND_ABOVE"
+  "theme": "GitHub",
+  "autoAccept": false,
+  "vimMode": false,
+  "sandbox": false,
+  "hideTips": false,
+  "hideBanner": false,
+  "usageStatisticsEnabled": true,
+  "showLineNumbers": true,
+  "maxSessionTurns": -1,
+  "fileFiltering": {
+    "respectGitIgnore": true,
+    "enableRecursiveFileSearch": true
   },
-  "outputFormat": "json",
-  "verbose": false,
-  "timeout": 30000,
-  "retryAttempts": 3,
-  "logLevel": "info"
+  "telemetry": {
+    "enabled": false,
+    "target": "local",
+    "otlpEndpoint": "http://localhost:4317",
+    "logPrompts": true
+  },
+  "checkpointing": {
+    "enabled": false
+  },
+  "preferredEditor": "vscode"
 }
 ```
 
-#### Configuration Options
-
-| Setting | Type | Default | Description |
-|---------|------|---------|-------------|
-| `apiKey` | string | - | Your Gemini API key (use environment variable) |
-| `model` | string | "gemini-pro" | Model to use (gemini-pro, gemini-pro-vision) |
-| `temperature` | number | 0.7 | Controls randomness (0.0-1.0) |
-| `maxTokens` | number | 1024 | Maximum tokens in response |
-| `topP` | number | 0.9 | Nucleus sampling parameter |
-| `topK` | number | 40 | Top-k sampling parameter |
-| `safetySettings` | object | - | Content safety filters |
-| `outputFormat` | string | "json" | Output format (json, text, markdown) |
-| `verbose` | boolean | false | Enable verbose logging |
-| `timeout` | number | 30000 | Request timeout in milliseconds |
-| `retryAttempts` | number | 3 | Number of retry attempts |
-| `logLevel` | string | "info" | Logging level (debug, info, warn, error) |
-
 ## Environment Variables
 
-Create a `.env` file in your project root:
+The CLI automatically loads environment variables from `.env` files in this order:
+
+1. `.env` in current working directory
+2. Parent directories (searching upward to project root or home)
+3. `~/.env` in user's home directory
+
+### Required Variables
+
+- **`GEMINI_API_KEY`** (Required): Your Gemini API key
+  - Get from: https://aistudio.google.com/app/apikey
+
+### Optional Variables
+
+- **`GEMINI_MODEL`**: Override default model
+  - Example: `gemini-2.0-flash-exp`, `gemini-1.5-pro`
+
+- **`GOOGLE_API_KEY`**: Google Cloud API key (for Vertex AI express mode)
+
+- **`GOOGLE_CLOUD_PROJECT`**: Google Cloud Project ID
+
+- **`GOOGLE_APPLICATION_CREDENTIALS`**: Path to credentials JSON file
+
+- **`GOOGLE_CLOUD_LOCATION`**: Google Cloud region (e.g., `us-central1`)
+
+- **`GEMINI_SANDBOX`**: Enable sandboxing
+  - Values: `true`, `false`, `docker`, `podman`
+
+- **`DEBUG`**: Enable debug logging
+  - Set to `true` or `1`
+
+- **`NO_COLOR`**: Disable color output
+  - Set to any value
+
+## Command-Line Usage
+
+### Basic Commands
 
 ```bash
-# Gemini API Configuration
-GEMINI_API_KEY=your_api_key_here
-GEMINI_MODEL=gemini-pro
-GEMINI_TEMPERATURE=0.7
+# Start interactive session
+gemini
+
+# Run with specific model
+gemini --model gemini-1.5-pro
+
+# One-time prompt (non-interactive)
+gemini --prompt "Explain quantum computing"
+
+# Interactive session with initial prompt
+gemini --prompt-interactive "Help me debug this code"
+
+# Enable sandbox mode
+gemini --sandbox
+
+# Auto-approve all tool calls (YOLO mode)
+gemini --yolo
+
+# Set approval mode
+gemini --approval-mode auto_edit
 ```
 
-## Usage Examples
+### Useful Flags
 
-### Basic Text Generation
+- **`--model <name>`** or **`-m <name>`**: Specify model
+- **`--sandbox`** or **`-s`**: Enable sandboxing
+- **`--debug`** or **`-d`**: Enable debug mode
+- **`--all-files`** or **`-a`**: Include all files as context
+- **`--yolo`**: Auto-approve all tool calls
+- **`--approval-mode <mode>`**: Set approval mode
+- **`--help`** or **`-h`**: Show help
 
-```bash
-# Generate text with default settings
-gemini generate "Write a hello world function in Python"
+## Context Files (Memory)
 
-# Generate with custom temperature
-gemini generate "Explain quantum computing" --temperature 0.3
+Context files provide instructions and background information to the AI model.
 
-# Use specific model
-gemini generate "Create a poem" --model gemini-pro-vision
+### Default Context File
+
+By default, the CLI looks for `GEMINI.md` files to use as context:
+
+- Global: `~/.gemini/GEMINI.md`
+- Project: `./GEMINI.md` and in parent directories
+- Local: `GEMINI.md` files in subdirectories
+
+### Example GEMINI.md
+
+```markdown
+# Project Context
+
+## Coding Standards
+- Use TypeScript for all new code
+- Follow ESLint configuration
+- Write JSDoc comments for public APIs
+
+## Project Structure
+- `src/` - Source code
+- `tests/` - Test files
+- `docs/` - Documentation
+
+## Specific Instructions
+- When reviewing code, focus on performance and security
+- Suggest modern JavaScript/TypeScript patterns
+- Always include error handling
 ```
 
-### Configuration Override
+### Memory Commands
 
 ```bash
-# Override settings via command line
-gemini generate "Hello" --max-tokens 500 --temperature 0.9
+# Refresh context files
+/memory refresh
 
-# Use custom config file
-gemini generate "Hello" --config ./custom-settings.json
-```
-
-### Batch Processing
-
-```bash
-# Process multiple prompts from file
-gemini batch --input prompts.txt --output responses.json
-
-# Generate with custom format
-gemini generate "Explain AI" --format markdown
+# Show current context
+/memory show
 ```
 
 ## Best Practices
 
-1. **Security**: Always use environment variables for API keys
-2. **Model Selection**: Choose appropriate model for your use case
-3. **Temperature**: Lower values (0.1-0.3) for factual content, higher (0.7-0.9) for creative
-4. **Safety**: Configure safety settings based on your application needs
-5. **Timeouts**: Set appropriate timeouts for your network conditions
-6. **Logging**: Enable verbose mode for debugging
+### Security
+- Always use environment variables for API keys
+- Never commit `.env` files with real keys
+- Use project-specific `.env` files for different environments
+
+### Configuration
+- Start with basic configuration and add settings as needed
+- Use project-specific settings for team collaboration
+- Document custom settings in your project README
+
+### Context Files
+- Create meaningful `GEMINI.md` files for better AI responses
+- Include coding standards and project conventions
+- Keep context relevant and up-to-date
 
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Authentication Error**: Verify your API key is correct and has proper permissions
-2. **Rate Limiting**: Implement retry logic and respect rate limits
-3. **Model Unavailable**: Check if the specified model is available in your region
-4. **Timeout Issues**: Increase timeout values for complex requests
+1. **Missing API Key**: Ensure `GEMINI_API_KEY` is set
+2. **Model Not Found**: Check if model name is correct
+3. **Permission Denied**: Verify API key permissions
+4. **Sandbox Issues**: Ensure Docker is installed and running
 
 ### Debug Mode
 
-Enable debug logging to troubleshoot issues:
+Enable debug logging for troubleshooting:
 
-```json
+```bash
+# Command line
+gemini --debug
+
+# Environment variable
+export DEBUG=true
+gemini
+
+# In settings.json (not a direct setting, but enable telemetry)
 {
-  "logLevel": "debug",
-  "verbose": true
+  "telemetry": {
+    "enabled": true,
+    "logPrompts": true
+  }
 }
 ```
 
-## Integration with Development Workflow
+## Integration Examples
 
-### VS Code Integration
+### VS Code
 
-Create `.vscode/settings.json` for VS Code integration:
+Add to your VS Code workspace settings:
 
 ```json
 {
-  "gemini.apiKey": "${env:GEMINI_API_KEY}",
-  "gemini.model": "gemini-pro",
-  "gemini.autoComplete": true
+  "terminal.integrated.env.linux": {
+    "GEMINI_API_KEY": "${env:GEMINI_API_KEY}"
+  },
+  "terminal.integrated.env.osx": {
+    "GEMINI_API_KEY": "${env:GEMINI_API_KEY}"
+  },
+  "terminal.integrated.env.windows": {
+    "GEMINI_API_KEY": "${env:GEMINI_API_KEY}"
+  }
 }
 ```
 
-### Git Integration
-
-Add to `.gitignore`:
-
-```
-# Gemini CLI
-.gemini/cache/
-gemini-responses/
-*.gemini-log
-```
-
-## Advanced Configuration
-
-### Custom Prompts
-
-Create a `prompts/` directory with reusable prompts:
-
-```
-prompts/
-├── code-review.md
-├── documentation.md
-└── translation.md
-```
-
-### Workflow Automation
-
-Example GitHub Actions workflow:
+### GitHub Actions
 
 ```yaml
 name: AI Code Review
 on: [pull_request]
+
 jobs:
-  review:
+  ai-review:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Install Gemini CLI
+        run: npm install -g @google/gemini-cli
+      
       - name: AI Review
         run: |
-          gemini generate "Review this code change" \
-            --input diff.txt \
-            --config .gemini/review-settings.json
+          gemini --prompt "Review the changes in this PR for security and best practices"
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 ```
 
 ## See Also
 
+- [Official Gemini CLI Repository](https://github.com/google-gemini/gemini-cli)
 - [Gemini API Documentation](https://ai.google.dev/docs)
-- [Authentication Guide](https://ai.google.dev/docs/authentication)
-- [Model Capabilities](https://ai.google.dev/models/gemini)
+- [Google AI Studio](https://aistudio.google.com/)
+- [Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs)

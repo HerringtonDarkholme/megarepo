@@ -1,29 +1,25 @@
 {
-  "apiKey": "${GEMINI_API_KEY}",
-  "model": "gemini-pro",
-  "temperature": 0.7,
-  "maxTokens": 1024,
-  "topP": 0.9,
-  "topK": 40,
-  "safetySettings": {
-    "harassment": "BLOCK_MEDIUM_AND_ABOVE",
-    "hateSpeech": "BLOCK_MEDIUM_AND_ABOVE",
-    "sexuallyExplicit": "BLOCK_MEDIUM_AND_ABOVE",
-    "dangerousContent": "BLOCK_MEDIUM_AND_ABOVE"
+  "theme": "GitHub",
+  "autoAccept": false,
+  "vimMode": false,
+  "sandbox": false,
+  "hideTips": false,
+  "hideBanner": false,
+  "usageStatisticsEnabled": true,
+  "showLineNumbers": true,
+  "maxSessionTurns": -1,
+  "fileFiltering": {
+    "respectGitIgnore": true,
+    "enableRecursiveFileSearch": true
   },
-  "outputFormat": "json",
-  "verbose": false,
-  "timeout": 30000,
-  "retryAttempts": 3,
-  "logLevel": "info",
-  "systemInstruction": "You are a helpful AI assistant focused on providing accurate and concise responses.",
-  "candidateCount": 1,
-  "stopSequences": [],
-  "responseSchema": null,
-  "tools": [],
-  "toolConfig": {
-    "functionCallingConfig": {
-      "mode": "AUTO"
-    }
-  }
+  "telemetry": {
+    "enabled": false,
+    "target": "local",
+    "otlpEndpoint": "http://localhost:4317",
+    "logPrompts": true
+  },
+  "checkpointing": {
+    "enabled": false
+  },
+  "preferredEditor": "vscode"
 }

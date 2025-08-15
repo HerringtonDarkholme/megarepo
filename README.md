@@ -4,16 +4,24 @@ A comprehensive repository with AI setup and configuration for various AI tools 
 ## AI Tools Configuration
 
 ### Gemini CLI
-Google's command-line interface for interacting with Gemini AI models.
+Google's command-line interface for interacting with Gemini AI models through an interactive chat interface.
 
-- **Documentation**: [Gemini CLI Configuration](./docs/gemini-cli/configuration.md)
-- **Settings**: [Example settings.json](./docs/gemini-cli/settings.json)
-- **Environment**: [.env.example](./.env.example)
+- **Documentation**: [Gemini CLI Configuration](./docs/gemini-cli/configuration.md) - Complete setup guide based on official documentation
+- **Settings**: [Example settings.json](./docs/gemini-cli/settings.json) - Valid configuration options
+- **Environment**: [.env.example](./.env.example) - Environment variables template
 
 #### Quick Setup
-1. Copy `.env.example` to `.env` and add your API key
-2. Use the example `settings.json` or customize based on your needs
-3. Follow the [configuration guide](./docs/gemini-cli/configuration.md) for detailed setup
+1. Install: `npm install -g @google/gemini-cli`
+2. Copy `.env.example` to `.env` and add your `GEMINI_API_KEY`
+3. Start: `gemini` for interactive mode or `gemini --prompt "Your question"`
+4. Follow the [configuration guide](./docs/gemini-cli/configuration.md) for advanced setup
+
+#### Key Features
+- Interactive AI chat with file operations and shell commands
+- Context-aware responses using `GEMINI.md` files
+- Sandboxed execution for safety
+- Built-in tools for code editing and analysis
+- Configurable themes and behavior
 
 ## Getting Started
 
@@ -23,4 +31,4 @@ Google's command-line interface for interacting with Gemini AI models.
 
 ## Documentation
 
-- [Gemini CLI Configuration](./docs/gemini-cli/configuration.md) - Complete guide to setting up and configuring Gemini CLI
+- [Gemini CLI Configuration](./docs/gemini-cli/configuration.md) - Complete guide to setting up and configuring Google's Gemini CLI
