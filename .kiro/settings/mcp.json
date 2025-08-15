@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "ALLOWED_DIRECTORIES": ["/home/runner/work/megarepo/megarepo"]
+      }
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"],
+      "env": {
+        "GIT_REPOSITORY_PATH": "/home/runner/work/megarepo/megarepo"
+      }
+    }
+  },
+  "tools": {
+    "enabled": [
+      "file_operations",
+      "code_analysis", 
+      "search",
+      "documentation",
+      "git_operations"
+    ],
+    "restricted": [
+      "system_commands",
+      "network_access",
+      "process_management"
+    ]
+  },
+  "safety": {
+    "content_filtering": true,
+    "input_validation": true,
+    "output_sanitization": true,
+    "pii_detection": true
+  }
+}
