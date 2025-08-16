@@ -30,7 +30,7 @@ This document defines the project-specific rules and guidelines that must be fol
 - **Runtime**: Node.js (latest LTS version)
 - **Frontend Framework**: Next.js with React
 - **Language**: TypeScript for all JavaScript code
-- **Package Manager**: npm (no yarn or pnpm)
+- **Package Manager**: npm or pnpm (both supported; pnpm offers improved performance and workspace management for large AI projects)
 - **License**: MIT (maintain consistency)
 
 ### AI Integration Libraries
