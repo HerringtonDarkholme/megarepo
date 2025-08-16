@@ -19,7 +19,11 @@ npm run build  # Allow 60+ minutes - AI projects can have complex builds
 # Run tests with adequate time
 npm test  # Allow 30+ minutes for comprehensive test suites
 ```
+# Build with reasonable timeout for most projects
+npm run build  # Allow 15-30 minutes for most Node.js/Next.js builds with AI integrations
 
+# Run tests with adequate time
+npm test  # Allow 30+ minutes for comprehensive test suites
 ## AI Integration Best Practices
 
 ### Preferred AI Dependencies
