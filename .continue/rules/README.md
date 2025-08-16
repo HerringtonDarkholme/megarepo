@@ -18,7 +18,7 @@ The rules are organized into focused files that build upon each other:
 
 ## How Continue Uses These Rules
 
-Continue automatically processes all Markdown files in this directory, combining them into a unified set of rules. The numeric prefixes help organize the files in a logical sequence, ensuring core principles are established before specific guidelines.
+Continue typically processes Markdown files in this directory, combining them into a unified set of rules. While numeric prefixes help organize the files in a logical sequence, actual processing order may depend on Continue's configuration and may not strictly follow the numeric order.
 
 ### Rule Activation
 
