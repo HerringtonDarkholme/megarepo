@@ -211,7 +211,12 @@ All configurations share common principles while being optimized for each assist
 - Plan for service availability and downtime scenarios  
 - Understand billing implications of AI service usage
 - Document known limitations and workarounds
-- Consider geographic availability of AI services
+- Consider geographic availability of AI services:
+  - Check if the AI service is available in the target region before integrating or deploying.
+  - Document any region-specific limitations or restrictions for each AI service.
+  - Provide fallback mechanisms or alternative services for unsupported regions.
+  - Handle errors gracefully when geographic restrictions prevent service access.
+  - Example: If OpenAI API is not available in a user's country, log the error and notify the user with a clear message, or switch to a supported provider if possible.
 
 ---
 
