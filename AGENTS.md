@@ -34,6 +34,16 @@ This repository includes configuration and instruction files for various AI agen
   - Testing strategies for AI components and integrations
   - Documentation standards for AI projects
 
+### Gemini CLI
+- **Configuration File**: `GEMINI.md`
+- **Purpose**: Google's AI-powered command-line interface for interactive development
+- **Capabilities**:
+  - Interactive AI-assisted development sessions
+  - Context-aware code generation and editing
+  - File-based project memory and configuration
+  - Extensible tool system with MCP server support
+  - Project-specific settings and sandboxing options
+
 ## Agent Coordination
 
 ### Shared Principles
