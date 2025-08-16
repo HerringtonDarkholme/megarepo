@@ -1,0 +1,158 @@
+##########################################################
+# .aider.conf.yml for Megarepo AI Setup Repository
+# Configuration adapted for AI development workflows
+##########################################################
+
+#############
+# Main model:
+
+## Use a capable model for AI development tasks
+model: claude-3-5-sonnet-20241022
+
+########################
+# API Keys and settings:
+
+## Use environment variables for API keys (consistent with .env pattern)
+## Set API keys through environment variables - see .env.example
+## ANTHROPIC_API_KEY should be set in environment or .env file
+## OPENAI_API_KEY can be set for OpenAI models if needed
+
+#################
+# Model settings:
+
+## Verify SSL connections (production safety)
+verify-ssl: true
+
+## Use editor-friendly edit format for better AI collaboration
+edit-format: diff
+
+## Enable architect mode for complex AI development tasks
+architect: false
+
+## Automatically accept architect changes for smoother workflow
+auto-accept-architect: true
+
+## Use a lighter model for commit messages and summaries
+weak-model: claude-3-haiku-20240307
+
+## Show model warnings for better development experience
+show-model-warnings: true
+
+## Enable model settings validation
+check-model-accepts-settings: true
+
+###################
+# Repomap settings:
+
+## Use generous token allocation for repo mapping (AI repos can be complex)
+map-tokens: 4000
+
+## Auto-refresh repo map for evolving AI projects
+map-refresh: auto
+
+## Higher multiplier when no specific files specified (useful for AI projects)
+map-multiplier-no-files: 2
+
+################
+# History Files:
+
+## Standard history files for the repository
+input-history-file: .aider.input.history
+chat-history-file: .aider.chat.history.md
+
+## Don't restore chat history by default (clean sessions)
+restore-chat-history: false
+
+##################
+# Output settings:
+
+## Enable pretty output for better development experience
+pretty: true
+
+## Enable streaming for responsive AI interactions
+stream: true
+
+## Use colors suitable for development environments
+dark-mode: false
+
+## Show diffs when committing (helpful for AI development review)
+show-diffs: true
+
+###############
+# Git settings:
+
+## Enable git integration
+git: true
+
+## Add .aider* files to .gitignore automatically
+gitignore: true
+
+## Don't add gitignored files to editing scope
+add-gitignore-files: false
+
+## Use .aiderignore for additional exclusions
+aiderignore: .aiderignore
+
+## Enable auto-commits for AI changes
+auto-commits: true
+
+## Allow commits when repo is dirty
+dirty-commits: true
+
+## Attribute AI changes in git authorship
+attribute-author: true
+attribute-committer: true
+
+## Use Co-authored-by for AI attribution
+attribute-co-authored-by: true
+
+## Don't skip git pre-commit hooks
+git-commit-verify: false
+
+########################
+# Fixing and committing:
+
+## Enable automatic linting after changes (when lint tools exist)
+auto-lint: true
+
+## Don't auto-test by default (tests may not exist yet in minimal setup)
+auto-test: false
+
+############
+# Analytics:
+
+## Disable analytics for privacy in AI development
+analytics: false
+
+## Permanently disable analytics
+analytics-disable: true
+
+########
+# Modes:
+
+## Don't run in browser mode by default
+gui: false
+
+#################
+# Other settings:
+
+## Enable suggesting shell commands for development
+suggest-shell-commands: true
+
+## Enable fancy input with history and completion
+fancy-input: true
+
+## Enable URL detection for AI development resources
+detect-urls: true
+
+## Use UTF-8 encoding
+encoding: utf-8
+
+## Use platform-appropriate line endings
+line-endings: platform
+
+## Load environment from .env file (consistent with repository pattern)
+env-file: .env
+
+## Enable notifications for AI interaction completion
+notifications: false
