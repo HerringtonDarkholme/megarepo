@@ -1,0 +1,79 @@
+---
+description: "Code quality standards including TypeScript, testing, and formatting guidelines"
+globs: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.test.*", "**/*.spec.*"]
+alwaysApply: true
+---
+
+# Code Quality Standards
+
+Comprehensive code quality guidelines for the AI setup repository.
+
+## Core Development Principles
+
+### 1. TypeScript Guidelines
+- Use strict type checking
+- Define interfaces for all AI API responses
+- Use union types for AI model selections
+- Implement proper error type definitions
+
+### 2. TypeScript Patterns
+```typescript
+// Define interfaces for AI responses
+interface AIResponse {
+  content: string;
+  model: string;
+  usage: {
+    prompt_tokens: number;
+    completion_tokens: number;
+  };
+}
+
+// Use union types for model selection
+type AIModel = 'gpt-4' | 'gpt-3.5-turbo' | 'claude-3' | 'claude-2';
+```
+
+### 3. React Best Practices
+- Use functional components with hooks
+- Implement proper cleanup for AI subscriptions
+- Use React.memo for expensive AI-powered components
+- Handle loading and error states consistently
+
+### 4. Testing Patterns
+```javascript
+// Example AI component test pattern
+describe('AI Chat Component', () => {
+  it('handles API errors gracefully', async () => {
+    // Mock AI service failure
+    mockAIService.mockRejectedValue(new Error('API Error'));
+    
+    render(<ChatComponent />);
+    
+    // Test error handling and user feedback
+    expect(screen.getByText(/error/i)).toBeInTheDocument();
+  });
+});
+```
+
+### 5. Error Handling Standards
+- Write comprehensive error handling and logging
+- Implement proper error boundaries for React components
+- Use custom error types for different failure scenarios
+- Provide meaningful error messages to users
+
+### 6. Documentation Requirements
+- Document all AI-related functions and components
+- Include usage examples for AI integrations
+- Explain prompt engineering decisions
+- Document environment setup requirements
+
+### 7. Code Style Guidelines
+- Write clean, readable, and well-documented code
+- Follow established linting and formatting rules
+- Write meaningful commit messages and documentation
+- Use descriptive variable and function names
+
+### 8. API Development Standards
+- Follow RESTful principles for AI service endpoints
+- Implement proper rate limiting and authentication
+- Use middleware for common AI service operations
+- Document API endpoints with clear examples

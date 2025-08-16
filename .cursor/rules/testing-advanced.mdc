@@ -1,0 +1,83 @@
+---
+description: "Advanced testing patterns for AI applications including mocking, integration tests, and performance monitoring"
+globs: ["**/*.test.*", "**/*.spec.*", "tests/**/*", "__tests__/**/*"]
+alwaysApply: false
+---
+
+# Advanced AI Testing Patterns
+
+Comprehensive testing strategies for AI-powered applications.
+
+## AI-Specific Testing Approaches
+
+### 1. AI Service Mocking
+```typescript
+// Mock AI service responses for consistent testing
+const mockAIService = {
+  complete: jest.fn(),
+  stream: jest.fn(),
+  embed: jest.fn()
+};
+
+beforeEach(() => {
+  mockAIService.complete.mockResolvedValue({
+    content: 'Mocked AI response',
+    usage: { prompt_tokens: 10, completion_tokens: 20 }
+  });
+});
+```
+
+### 2. Integration Testing Patterns
+```typescript
+describe('AI Integration Tests', () => {
+  it('handles real AI service responses', async () => {
+    // Use test API keys for integration tests
+    // Test with actual AI services in staging
+    // Validate response formats and data
+    // Handle rate limiting and timeouts
+  });
+  
+  it('gracefully handles AI service outages', async () => {
+    // Test failure scenarios
+    // Validate fallback behaviors
+    // Ensure user experience remains smooth
+  });
+});
+```
+
+### 3. Performance Testing
+- Monitor AI response times
+- Test under concurrent load
+- Measure token usage and costs
+- Validate memory usage patterns
+
+### 4. End-to-End Testing
+```typescript
+// Test complete AI workflows
+describe('AI Chat Flow', () => {
+  it('completes full conversation cycle', async () => {
+    // Send user message
+    // Receive AI response
+    // Validate UI updates
+    // Test conversation history
+  });
+});
+```
+
+### 5. Error Scenario Testing
+- Test API rate limit handling
+- Validate quota exceeded scenarios
+- Test network failure recovery
+- Verify error message display
+
+### 6. Data Quality Testing
+- Validate AI response formats
+- Test prompt injection prevention
+- Verify content filtering
+- Check for appropriate responses
+
+### 7. Accessibility Testing
+- Test screen reader compatibility
+- Validate keyboard navigation
+- Check color contrast compliance
+- Test with assistive technologies
