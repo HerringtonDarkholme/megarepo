@@ -96,7 +96,7 @@ Megarepo is a minimal repository template designed for AI-related projects. It s
 - Create abstraction layers for AI services to enable easy switching
 - Implement circuit breaker patterns for AI service failures
 - Use connection pooling for better performance
-- Include proper timeout handling (30+ seconds for most AI operations)
+- Include proper timeout handling (30-60 seconds for most AI operations, or specify per operation type)
 - Design for graceful degradation when AI services are unavailable
 
 ### Error Handling
