@@ -19,7 +19,7 @@ Critical security guidelines for AI development in this repository.
 
 ### 2. Environment Variable Patterns
 Create `.env.local` with these patterns:
-```bash
+```env
 # AI Service Keys
 OPENAI_API_KEY=your_openai_key_here
 ANTHROPIC_API_KEY=your_anthropic_key_here
