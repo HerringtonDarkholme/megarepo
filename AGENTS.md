@@ -24,6 +24,16 @@ This repository includes configuration and instruction files for various AI agen
   - Build and test workflow instructions
   - Node.js/Next.js development patterns
 
+### Windsurf AI
+- **Configuration Files**: `.windsurf/rules/` directory with multiple rule files
+- **Purpose**: Intelligent code assistance with contextual rule activation
+- **Capabilities**:
+  - Context-aware rule activation (Always On, Manual, Model Decision, Glob patterns)
+  - AI development best practices and security guidelines
+  - TypeScript/JavaScript specific patterns and optimizations
+  - Testing strategies for AI components and integrations
+  - Documentation standards for AI projects
+
 ### Gemini CLI
 - **Configuration File**: `GEMINI.md`
 - **Purpose**: Google's AI-powered command-line interface for interactive development
