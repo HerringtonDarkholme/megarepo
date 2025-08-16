@@ -1,0 +1,77 @@
+---
+description: "Prompt engineering templates and best practices for AI model interactions"
+alwaysApply: false
+---
+
+# Prompt Engineering Templates
+
+Guidelines and templates for effective AI prompt engineering. Use `@prompt-engineering` to include this rule.
+
+## Prompt Engineering Best Practices
+
+### 1. Prompt Structure Templates
+```typescript
+// System prompt template
+const SYSTEM_PROMPT = `
+You are an expert assistant specialized in [DOMAIN].
+Your responses should be:
+- Accurate and factual
+- Concise but comprehensive
+- Professional in tone
+- Focused on [SPECIFIC_GOAL]
+
+Context: [CONTEXT_INFORMATION]
+`;
+
+// User prompt template
+const createUserPrompt = (input: string, context?: string) => `
+Task: ${input}
+${context ? `Additional context: ${context}` : ''}
+
+Please provide a response that follows the system guidelines.
+`;
+```
+
+### 2. Prompt Versioning
+- Store prompts in separate configuration files
+- Version prompts for A/B testing
+- Track prompt performance and iterate
+- Document prompt changes and rationale
+
+### 3. Dynamic Prompt Generation
+```typescript
+interface PromptConfig {
+  system: string;
+  temperature: number;
+  maxTokens: number;
+  stopSequences?: string[];
+}
+
+const generatePrompt = (
+  task: string, 
+  userInput: string, 
+  config: PromptConfig
+) => {
+  // Build context-aware prompts
+  // Include relevant examples
+  // Optimize for token efficiency
+};
+```
+
+### 4. Context Management
+- Implement conversation memory
+- Manage context window limits
+- Prioritize relevant information
+- Handle context overflow gracefully
+
+### 5. Prompt Optimization Techniques
+- Use few-shot learning examples
+- Implement chain-of-thought prompting
+- Apply role-based prompting
+- Include output format specifications
+
+### 6. Testing and Validation
+- Create test suites for prompt effectiveness
+- Measure response quality metrics
+- Compare different prompt versions
+- Monitor prompt performance in production
