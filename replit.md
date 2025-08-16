@@ -73,6 +73,10 @@ This replit.md file should be coordinated with other AI agent configurations in 
 - **CLAUDE.md**: Claude AI development assistance
 - **GEMINI.md**: Gemini CLI configuration
 - **AGENT.md**: Universal AI agent instructions
-- **AGENTS.md**: Overview of all configured agents
+This replit.md file is intended to be coordinated with other AI agent configuration files (such as `CLAUDE.md`, `GEMINI.md`, `AGENT.md`, `AGENTS.md`) as the repository evolves. These files may not currently exist and are planned for future addition:
+- **CLAUDE.md**: Claude AI development assistance (planned)
+- **GEMINI.md**: Gemini CLI configuration (planned)
+- **AGENT.md**: Universal AI agent instructions (planned)
+- **AGENTS.md**: Overview of all configured agents (planned)
 
 Maintain consistency across all AI agent configurations while respecting the unique capabilities of each service.
