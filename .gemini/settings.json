@@ -1,0 +1,42 @@
+{
+  "contextFileName": ["GEMINI.md", "AGENTS.md", "AGENT.md"],
+  "fileFiltering": {
+    "respectGitIgnore": true,
+    "enableRecursiveFileSearch": true
+  },
+  "theme": "GitHub",
+  "autoAccept": false,
+  "vimMode": false,
+  "sandbox": false,
+  "telemetry": {
+    "enabled": false,
+    "target": "local",
+    "logPrompts": false
+  },
+  "usageStatisticsEnabled": false,
+  "hideTips": false,
+  "hideBanner": false,
+  "maxSessionTurns": -1,
+  "excludedProjectEnvVars": ["DEBUG", "DEBUG_MODE", "NODE_ENV"],
+  "includeDirectories": [],
+  "loadMemoryFromIncludeDirectories": false,
+  "chatCompression": {
+    "contextPercentageThreshold": 0.7
+  },
+  "showLineNumbers": true,
+  "preferredEditor": "vscode",
+  "checkpointing": {
+    "enabled": false
+  },
+  "coreTools": [
+    "ReadFileTool",
+    "WriteFileTool",
+    "GlobTool",
+    "ShellTool"
+  ],
+  "excludeTools": [
+    "ShellTool(rm -rf)",
+    "ShellTool(sudo)",
+    "ShellTool(chmod 777)"
+  ]
+}
