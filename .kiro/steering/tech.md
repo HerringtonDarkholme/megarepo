@@ -22,7 +22,7 @@ The repository is configured to support various AI integrations based on project
 - **LangChain** - Framework for developing applications with LLMs
 - **Hugging Face** - Open-source ML models and datasets
 - **TensorFlow** - Machine learning platform
-- **PyTorch** - Deep learning framework (if needed)
+- **PyTorch** - Deep learning framework (used for projects requiring dynamic computation graphs or when preferred over TensorFlow)
 
 ## Development Tools
 
