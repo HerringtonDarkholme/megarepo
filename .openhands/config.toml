@@ -1,0 +1,76 @@
+# OpenHands Configuration
+# This file configures OpenHands behavior for this project
+
+[core]
+# Workspace directory for the agent
+workspace_base = "./workspace"
+
+# Enable debug mode for verbose logging
+debug = false
+
+# Maximum number of iterations for task completion
+max_iterations = 100
+
+# Enable caching for improved performance
+cache_enabled = true
+
+[llm]
+# Language model configuration
+model = "gpt-4o"
+
+# API configuration
+api_key = ""  # Set your API key here or use environment variables
+api_base = ""
+api_version = ""
+
+# Model parameters
+temperature = 0.0
+top_p = 1.0
+max_tokens = 4096
+
+[agent]
+# Agent behavior configuration
+name = "CodeActAgent"
+
+# Enable function calling
+function_calling = true
+
+# Enable web browsing capabilities
+browsing_enabled = false
+
+# Memory configuration
+memory_enabled = true
+memory_max_threads = 10
+
+[sandbox]
+# Sandbox execution environment
+container_image = "ghcr.io/all-hands-ai/runtime:0.9-nikolaik"
+
+# Enable networking in sandbox
+enable_networking = true
+
+# Timeout for sandbox operations (in seconds)
+timeout = 120
+
+# Mount points for the sandbox
+mount_workspace = true
+
+[security]
+# Security settings
+confirmation_mode = false
+
+# Restrict dangerous operations
+restrict_file_operations = false
+
+# Enable audit logging
+audit_logging = false
+
+[ui]
+# User interface settings
+default_agent = "CodeActAgent"
+
+# Enable auto-completion
+enable_auto_completion = true
+
+# Chat interface settings
+enable_chat_history = true
