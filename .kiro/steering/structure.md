@@ -81,7 +81,7 @@ megarepo/
 - **Directories**: Use kebab-case for multi-word directories (`ai-services/`, `user-interface/`)
 - **React Components**: Use PascalCase for component files (`AIChat.tsx`, `UserProfile.tsx`)
 - **Utilities**: Use camelCase for utility files (`apiHelpers.ts`, `stringUtils.ts`)
-- **Pages**: Use kebab-case for page files in pages directory (`about-us.tsx`)
+- **Pages**: Use camelCase for multi-word page files in the pages directory (`aboutUs.tsx`). Note: kebab-case creates URLs with hyphens (e.g., `/about-us`), but camelCase is preferred for consistency with Next.js best practices.
 - **API Routes**: Use kebab-case for API endpoint files (`ai-chat.ts`, `user-auth.ts`)
 
 ### Code Conventions
