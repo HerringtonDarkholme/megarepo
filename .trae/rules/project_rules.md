@@ -73,7 +73,11 @@ When adding AI functionality, prefer these libraries:
 ### Before Committing
 1. Run linting if configured: `npm run lint`
 2. Run tests if available: `npm run test`
-3. Check for secrets: `git diff --cached --name-only | xargs grep -l "api.*key\|secret\|token"`
+3. Check for secrets using a dedicated tool (recommended):  
+   - `gitleaks detect --staged`  
+   - or `git secrets --scan`  
+   If you cannot use these tools, use a broader grep pattern as a fallback:  
+   - `git diff --cached --name-only | xargs grep -E -i 'key|secret|token|password|aws_|access[_-]?key|private[_-]?key|client[_-]?id|client[_-]?secret'`
 4. Verify no build artifacts are included
 5. Update documentation if functionality changes
 
