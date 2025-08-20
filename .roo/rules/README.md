@@ -15,9 +15,7 @@ Roo Code automatically applies these rules as custom instructions when developer
 - **04-project-structure.md** - File organization and architecture patterns
 - **05-documentation.md** - Documentation requirements for AI integrations
 
-### Code Mode Rules (`/rules-code/`)
-- **typescript-patterns.md** - TypeScript-specific patterns for AI development
-- **ai-integration.md** - Code-specific AI service integration patterns
+
 
 ## Rule Design Principles
 
@@ -43,6 +41,5 @@ Roo Code will automatically discover and apply these rules when working within t
 
 1. Global rules (from `~/.roo/rules/`) - if configured
 2. Workspace rules (from `.roo/rules/`) - these files
-3. Mode-specific rules (from `.roo/rules-code/`) - for code mode
 
 Files are read recursively and appended to the system prompt in alphabetical order based on filename.
