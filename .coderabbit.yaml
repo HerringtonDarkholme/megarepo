@@ -1,0 +1,231 @@
+---
+# CodeRabbit configuration for Megarepo AI Setup Repository
+# Tailored for AI-first development patterns and Node.js/Next.js projects
+
+# Language and tone configuration
+language: "en-US"
+tone_instructions: >
+  Provide constructive, security-focused feedback with emphasis on
+  AI development best practices. Be thorough but encouraging.
+
+# Early access features for AI development
+early_access: true
+enable_free_tier: true
+
+# Review configuration
+reviews:
+  # Use assertive profile for thorough AI code review
+  profile: "assertive"
+
+  # Enable comprehensive review features
+  high_level_summary: true
+  high_level_summary_placeholder: "@coderabbitai summary"
+  high_level_summary_in_walkthrough: true
+  auto_title_placeholder: "@coderabbitai"
+  auto_title_instructions: >
+    Generate concise, descriptive titles focusing on AI functionality,
+    security improvements, or development workflow enhancements
+
+  # Review status and commit feedback
+  review_status: true
+  commit_status: true
+  fail_commit_status: true
+
+  # Walkthrough configuration
+  collapse_walkthrough: false
+  changed_files_summary: true
+  sequence_diagrams: true
+  estimate_code_review_effort: true
+  assess_linked_issues: true
+  related_issues: true
+  related_prs: true
+  suggested_labels: true
+  auto_apply_labels: false
+  suggested_reviewers: true
+  auto_assign_reviewers: false
+  poem: false  # Keep it professional for AI development
+
+  # Path filters for AI development
+  path_filters:
+    - "src/**"
+    - "*.md"
+    - "*.json"
+    - "*.yaml"
+    - "*.yml"
+    - "*.ts"
+    - "*.tsx"
+    - "*.js"
+    - "*.jsx"
+    - "!node_modules/**"
+    - "!.next/**"
+    - "!build/**"
+    - "!dist/**"
+    - "!coverage/**"
+
+  # Path-specific instructions for AI development
+  path_instructions:
+    - path: "src/components/ai/**"
+      instructions: >
+        Focus on AI component patterns, error handling for API failures,
+        loading states, and user experience during AI operations.
+        Ensure proper TypeScript types for AI service responses.
+
+    - path: "src/lib/ai/**"
+      instructions: >
+        Review AI service integrations for security, API key management,
+        rate limiting, error handling, and proper async patterns.
+        Validate environment variable usage and error responses.
+
+    - path: "src/app/api/**"
+      instructions: >
+        Examine API routes for proper authentication, input validation,
+        error handling, and security practices. Check for API key
+        exposure and proper response formatting.
+
+    - path: "**/*.env*"
+      instructions: >
+        Ensure no actual API keys or secrets are committed.
+        Verify .env.example contains all required variables with
+        example values.
+
+    - path: "**/*.md"
+      instructions: >
+        Review documentation for clarity, completeness, and alignment
+        with AI development best practices. Check for security
+        guidance and setup instructions.
+
+    - path: "**/package.json"
+      instructions: >
+        Review dependencies for security vulnerabilities, proper
+        versioning, and AI-related package choices. Ensure scripts
+        are properly configured.
+
+    - path: "**/tsconfig.json"
+      instructions: >
+        Validate TypeScript configuration for AI development patterns,
+        proper path aliases, and strict type checking.
+
+  # Labeling instructions for AI development
+  labeling_instructions:
+    - label: "ai-integration"
+      instructions: >
+        Apply when PR adds or modifies AI service integrations,
+        API clients, or AI-related functionality
+
+    - label: "security"
+      instructions: >
+        Apply when PR affects API key management, authentication,
+        input validation, or other security-related changes
+
+    - label: "configuration"
+      instructions: >
+        Apply when PR modifies configuration files, environment
+        setups, or project structure
+
+    - label: "documentation"
+      instructions: >
+        Apply when PR primarily updates documentation, README files,
+        or code comments
+
+    - label: "testing"
+      instructions: >
+        Apply when PR adds or modifies tests, especially AI component
+        testing or mock implementations
+
+    - label: "performance"
+      instructions: >
+        Apply when PR affects API response times, caching strategies,
+        or AI model performance optimizations
+
+    - label: "frontend"
+      instructions: >
+        Apply when PR contains changes to React components, UI elements,
+        or user-facing features
+
+    - label: "backend"
+      instructions: >
+        Apply when PR contains changes to API routes, server-side logic,
+        or backend services
+
+  # Auto review configuration
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    ignore_title_keywords: ["wip", "draft", "experimental", "temp"]
+    labels: []  # Review all PRs by default
+    drafts: true  # Review draft PRs for early feedback
+    base_branches: ["main", "develop", "staging"]
+
+  # Finishing touches for AI development
+  finishing_touches:
+    docstrings:
+      enabled: true
+    unit_tests:
+      enabled: true
+
+  # Pre-merge checks for AI development
+  pre_merge_checks:
+    docstrings:
+      mode: "warning"
+      threshold: 70  # Lower threshold for configuration-heavy repository
+
+    title:
+      mode: "warning"
+      requirements: >
+        Title should be concise and descriptive, focusing on the main
+        change or feature. Use conventional commit style when possible.
+
+    description:
+      mode: "warning"
+
+    issue_assessment:
+      mode: "warning"
+
+  # Enable relevant tools for Node.js/TypeScript/AI development
+  tools:
+    # TypeScript and JavaScript linting
+    biome:
+      enabled: true
+
+    # Shell script validation
+    shellcheck:
+      enabled: true
+
+    # Markdown linting
+    markdownlint:
+      enabled: true
+
+    # YAML validation
+    yamllint:
+      enabled: true
+
+    # GitHub checks integration
+    github-checks:
+      enabled: true
+      timeout_ms: 120000  # 2 minutes timeout
+
+    # Language checking for documentation
+    languagetool:
+      enabled: true
+      level: "default"
+      disabled_categories: ["TYPOS", "TYPOGRAPHY", "CASING"]
+
+    # Security scanning
+    gitleaks:
+      enabled: true
+
+    # Go linting if Go code is added
+    golangci-lint:
+      enabled: true
+
+    # Infrastructure security scanning
+    checkov:
+      enabled: true
+
+    # Docker file linting
+    hadolint:
+      enabled: true
+
+  # Repository-specific settings
+  abort_on_close: true
+  disable_cache: false
