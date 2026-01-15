@@ -13,5 +13,10 @@
       "enabled": true
     },
     "diff_style": "auto"
+  },
+  "permission": {
+    "skill": {
+      "*": "allow"
+    }
   }
 }
