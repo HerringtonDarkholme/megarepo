@@ -6,6 +6,7 @@ This directory can be used for OpenCode-specific customizations including:
 - **commands/** - Custom command implementations
 - **modes/** - Custom operational modes
 - **plugins/** - Custom plugins and extensions
+- **skill/** - Reusable agent skills (SKILL.md definitions)
 
 ## Usage
 
@@ -27,3 +28,13 @@ The `.opencode` directory is part of OpenCode's configuration precedence system:
 For more information, see:
 - [OpenCode Configuration Docs](https://opencode.ai/docs/config/)
 - [OpenCode Rules Docs](https://opencode.ai/docs/rules/)
+- [OpenCode Skills Docs](https://opencode.ai/docs/skills/)
+
+## Skills
+
+Skills are reusable agent instructions stored in `.opencode/skill/<name>/SKILL.md`. Each skill:
+- Must have YAML frontmatter with `name` and `description`
+- Can be loaded on-demand by agents via the `skill` tool
+- Requires permission configuration in `opencode.json`
+
+See the [Skills Documentation](https://opencode.ai/docs/skills/) for details.
