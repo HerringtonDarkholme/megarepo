@@ -16,9 +16,7 @@
   },
   "permission": {
     "skill": {
-      "*": "allow",
-      "ai-review": "allow",
-      "git-release": "allow"
+      "*": "allow"
     }
   }
 }
