@@ -44,6 +44,18 @@ This repository includes configuration and instruction files for various AI agen
   - Extensible tool system with MCP server support
   - Project-specific settings and sandboxing options
 
+### OpenCode
+- **Configuration Files**: `opencode.json`, `AGENTS.md` (also supports `CLAUDE.md` as fallback)
+- **Purpose**: Modern AI coding assistant with TUI and web interfaces
+- **Capabilities**:
+  - Terminal-based UI (TUI) and web-based interfaces
+  - Multi-provider model support (Anthropic, OpenAI, etc.)
+  - Custom instructions via AGENTS.md files
+  - Extensible configuration with JSON schema support
+  - Project-specific and global configuration merging
+  - Remote organizational config support
+  - Compatible with Claude Code file conventions
+
 ## Agent Coordination
 
 ### Shared Principles
