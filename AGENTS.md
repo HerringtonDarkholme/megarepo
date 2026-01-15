@@ -56,6 +56,18 @@ This repository includes configuration and instruction files for various AI agen
   - Remote organizational config support
   - Compatible with Claude Code file conventions
 
+### Google Antigravity
+- **Configuration Files**: `.agent/rules/` directory with workspace rules
+- **Purpose**: Google's AI-powered development assistant with advanced rule-based activation
+- **Reference**: https://antigravity.google/docs/skills
+- **Capabilities**:
+  - Context-aware rule activation (Always On, Manual, Model Decision, Glob patterns)
+  - Workspace-level rules for consistent AI assistance
+  - AI development best practices and security guidelines
+  - File-type specific guidance via glob patterns
+  - Manual activation rules for specialized features
+  - Model-driven context-aware assistance
+
 ## Agent Coordination
 
 ### Shared Principles
